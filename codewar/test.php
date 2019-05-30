@@ -113,3 +113,17 @@ function alphabet_position(string $s): string
 
     return $r;
 }
+
+//去掉数组给定值
+function arrayDiff($a, $b)
+{
+    return array_values(array_filter($a, function ($v) use ($b) {
+        if (!in_array($v, $b)) {
+            return true;
+        }
+
+        return false;
+    }));
+}
+
+//array_map array_reduce array_filter 我很喜欢这样的函数

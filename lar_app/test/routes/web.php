@@ -20,11 +20,19 @@ Route::get('about',function(){
    return view('about');
 });
 
-Route::get('/user/{id?}',function ($id = 1){
-    return "用户id: ".$id;
-});
+//Route::get('/user/{id?}',function ($id = 1){
+//    return "用户id: ".$id;
+//})->middleware('token');
 
-Route::group([],function (){
+Route::get('/user/{id}','UserController@show');
+
+Route::get('/single','ShowProfile');
+
+Route::group(['middleware' => ['test']],function (){
     Route::get('/hello',function (){return 'hello world!';});
     Route::get('/world',function (){return 'hello world!';});
+});
+
+Route::get('/login',function(){
+    return '登录页面';
 });
